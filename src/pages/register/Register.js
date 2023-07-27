@@ -1,20 +1,27 @@
 import React, { useState } from "react";
 import { Row, Col, Container, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-// import { postUser } from "../components/helper/axiosHelper";
 import { toast } from "react-toastify";
 import { FormComponents } from "../../components/formComponents/FormComponents";
 import "./Register.css"
+import { registerUser } from "../../helper/axiosHelper";
 
 const Register = () => {
   const [formData, setFormData] = useState({});
 
   const inputs = [
     {
-      name: "name",
+      name: "fName",
       type: "text",
-      label: "User Name",
+      label: "First Name",
       placeholder: "Jack",
+      required: true,
+    },
+    {
+      name: "lName",
+      type: "text",
+      label: "Last Name",
+      placeholder: "Jon",
       required: true,
     },
     {
@@ -48,7 +55,7 @@ const Register = () => {
     });
   };
 
-  // console.log(formData);
+  console.log(formData);
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -58,8 +65,8 @@ const Register = () => {
       return;
     }
 
-    // const { status, message } = await postUser(rest);
-    // toast[status](message);
+    const { status, message } = await registerUser(rest);
+    toast[status](message);
   };
   return (
     <div className="bg-color">
@@ -85,6 +92,18 @@ const Register = () => {
               {inputs.map((item, i) => (
                 <FormComponents key={i} {...item} onChange={handleOnChange} />
               ))}
+              <Form.Group className="mb-3"  onChange={handleOnChange}>
+              <Form.Label>Select</Form.Label>
+              <Form.Select
+                defaultValue="Select Role..."
+                required
+                name="role"
+                onChange={handleOnChange}>
+                <option disabled>Select Role...</option>
+                <option>Teacher</option>
+                <option>Student</option>
+              </Form.Select>
+            </Form.Group>
 
               <Button className="button mt-3 " type="submit">
                 Register

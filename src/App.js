@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Dashboard from "./pages/dashboard/Dashboard";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
+      <ToastContainer/>
     </>
   );
 }
