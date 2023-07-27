@@ -1,7 +1,14 @@
-import React from 'react'
+import React from "react";
+import { Header } from "../header/Header";
+import { Footer } from "../footer/Footer";
+import "./MainLayout.css";
 
-export const MainLayout = () => {
+export const MainLayout = ({ children }) => {
   return (
-    <div>MainLayout</div>
-  )
-}
+    <div>
+      <Header />
+      <div className="main">{children}</div>
+      <Footer />
+    </div>
+  );
+};
