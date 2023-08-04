@@ -61,7 +61,7 @@ const Register = () => {
     e.preventDefault();
     const { confirmPassword, ...rest } = formData;
     if (confirmPassword !== rest.password) {
-      toast.error("Password do not match!");
+      window.alert("Password do not match!");
       return;
     }
 
@@ -80,13 +80,6 @@ const Register = () => {
           <h2 className="text-center fw-bold"> Registration</h2>
           <hr />
 
-          {/* <Col className="p-5 text-center ">
-            <div className="p-5">
-              <h3 className="fw-bold mb-3"> Welcome!</h3>
-
-              <p> Please register here to use our system </p>
-            </div>
-          </Col> */}
           <Col className="p-5 col-md-6 register-book rounded text-light">
             <Form onSubmit={handleOnSubmit} className="bgColor p-3 rounded">
               {inputs.map((item, i) => (
@@ -100,8 +93,8 @@ const Register = () => {
                 name="role"
                 onChange={handleOnChange}>
                 <option disabled>Select Role...</option>
-                <option>Teacher</option>
-                <option>Student</option>
+                <option  value="teacher">Teacher</option>
+                <option value="student">Student</option>
               </Form.Select>
             </Form.Group>
 

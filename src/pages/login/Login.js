@@ -1,16 +1,22 @@
-import React, { useRef } from "react";
-import { Row, Col, Container, Form, Button } from "react-bootstrap";
+import React, { useEffect, useRef } from "react";
+import { Row, Col, Container, Form, Button, Spinner } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-// import { loginUser } from "../components/helper/axiosHelper";
-import { toast } from "react-toastify";
 import { FormComponents } from "../../components/formComponents/FormComponents";
 import "./Login.css";
+import { useDispatch, useSelector } from "react-redux";
+import { userLoginAction } from "../../redux/user/UserAction";
 
 const Login = () => {
   const emailRef = useRef();
   const passRef = useRef();
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const {isLoggedIn, isLoading} = useSelector((state) => state.user)
+
+useEffect(() => {
+  isLoggedIn && navigate("/dashboard")
+}, [isLoggedIn, navigate])
+
   const inputs = [
     {
       email: "email",
@@ -36,14 +42,8 @@ const Login = () => {
       email: emailRef.current.value,
       password: passRef.current.value,
     };
-    //   const {status, message, result} = await loginUser(obj)
-    //   console.log(result)
-    //  toast[status](message)
-    //  if (status === "success" && result?._id) {
-    //   sessionStorage.setItem("user", JSON.stringify(result))
-    //   localStorage.setItem("user", JSON.stringify(result))
-    //   navigate("/dashboard")
-    //  }
+    dispatch(userLoginAction(obj));
+    
   };
 
   return (
@@ -65,7 +65,7 @@ const Login = () => {
                 ))}
 
                 <Button className="button mt-3 " type="submit">
-                  Submit
+                  Submit<span>{isLoading && <Spinner variant="border" />}</span>
                 </Button>
                 <hr />
                 <div className="text-end">
