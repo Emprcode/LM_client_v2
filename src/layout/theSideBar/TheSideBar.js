@@ -55,7 +55,7 @@ export const TheSidebar = () => {
 
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="d-flex align-items-center gap-3">
+          <Offcanvas.Title className="d-flex justify-content-center align-items-center gap-3">
             <img src={person} alt="person" height="90px" width="90px" />
             <h2 className="fw-bold">
               {userInfo?.fName + " " + userInfo?.lName}
