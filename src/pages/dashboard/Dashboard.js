@@ -1,9 +1,14 @@
 import React from 'react'
 import { MainLayout } from '../../layout/mainlayout/MainLayout'
+import Container from 'react-bootstrap/esm/Container'
 
 const Dashboard = () => {
   return (
-    <MainLayout>Dashboard</MainLayout>
+    <MainLayout>
+      <Container>
+        YO!
+      </Container>
+    </MainLayout>
   )
 }
 
