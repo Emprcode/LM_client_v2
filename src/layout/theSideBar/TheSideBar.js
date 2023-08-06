@@ -11,8 +11,11 @@ import { AiFillSetting } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "./TheSidebar.css";
 import person from "../../assets/person.png";
+import { useSelector } from "react-redux";
 
 export const TheSidebar = () => {
+  const { userInfo } = useSelector((state) => state.user);
+  console.log(userInfo);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -54,7 +57,9 @@ export const TheSidebar = () => {
         <Offcanvas.Header closeButton>
           <Offcanvas.Title className="d-flex align-items-center gap-3">
             <img src={person} alt="person" height="90px" width="90px" />
-            <h2 className="fw-bold">John Doe</h2>
+            <h2 className="fw-bold">
+              {userInfo?.fName + " " + userInfo?.lName}
+            </h2>
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
