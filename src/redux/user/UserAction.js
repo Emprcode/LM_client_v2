@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { loginUser } from "../../helper/axiosHelper";
+import { fetchUserProfile, loginUser } from "../../helper/axiosHelper";
 import { loginSuccess, requestFailed, requestPending } from "./UserSlice";
 
 export const userLoginAction = (data) => async (dispatch) => {
@@ -8,12 +8,27 @@ export const userLoginAction = (data) => async (dispatch) => {
     dispatch(requestPending());
 
     //call axios
-    const { status, message, user } = await loginUser(data);
+    const { status, message, tokens } = await loginUser(data);
 
-    status === "success"
-      ? dispatch(loginSuccess(user)) && toast[status](message)
-      : dispatch(requestFailed(message)) && toast[status](message);
+    if (status === "success" && tokens?.accessJWT) {
+      const {accessJWT, refreshJWT} = tokens
+
+      sessionStorage.setItem("accessJWT", accessJWT)
+      localStorage.setItem("refreshJWT", refreshJWT)
+
+     dispatch(FetchUserProfileAction())
+      toast[status](message)
+    }
   } catch (error) {
     dispatch(requestFailed(error));
   }
 };
+
+export const FetchUserProfileAction = () => async( dispatch) => {
+  //call axios to get user profile
+
+  const {status, user} = await fetchUserProfile()
+  if (status==="success" && user?._id) {
+    dispatch(loginSuccess(user))
+  }
+}

@@ -32,3 +32,18 @@ export const loginUser = async(userObj) => {
     
   }
 }
+
+//get user profile
+
+export const fetchUserProfile = async() => {
+  try {
+    const headers ={
+      Authorization : sessionStorage.getItem("accessJWT")
+    }
+    const {data} = await axios.get(userApi, {headers})
+
+    return data
+  } catch (error) {
+    return error.message
+  }
+}
