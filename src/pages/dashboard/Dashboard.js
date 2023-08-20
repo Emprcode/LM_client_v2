@@ -41,7 +41,7 @@ const Dashboard = () => {
 
         <Row className="p-5 mt-5 ">
           <h1 className="mt-5 fw-bold d-flex justify-content-center">
-            More Info Coming Soon......
+            Check out our latest book collection
           </h1>
         </Row>
       </Container>
