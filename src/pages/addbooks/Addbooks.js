@@ -1,38 +1,33 @@
-
-import { MainLayout } from '../../layout/mainlayout/MainLayout'
-import React, { useState } from "react"
-import { Button, Col, Form, Spinner } from "react-bootstrap"
-import DashboardLayout from "../components/layout/DashboardLayout"
-import book from "../assets/books.jpg"
-import { useDispatch, useSelector } from "react-redux"
-import { addBookAction } from "../redux/Book/BookAction"
+import { MainLayout } from "../../layout/mainlayout/MainLayout";
+import React, { useState } from "react";
+import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { addBookAction } from "../../redux/book/BookAction";
 
 const Addbooks = () => {
-  const dispatch = useDispatch()
-  const [formData, setFormData] = useState({})
-  const { isLoading } = useSelector((state) => state.book)
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({});
+  const { isLoading } = useSelector((state) => state.book);
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
 
-    setFormData({ ...formData, [name]: value })
-  }
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     dispatch(addBookAction(formData)) &&
-      setFormData({ title: "", author: "", isbn: "", year: "", thumbnail: "" })
-  }
+      setFormData({ title: "", author: "", isbn: "", year: "", thumbnail: "" });
+  };
   return (
     <MainLayout>
-      <div className="add">
-        <div className="add-top">
-          <h1>Add New Book</h1>
-        </div>
-        <div className="add-bottom">
-          <Col md={7} className="d-none d-sm-block">
-            <img src={book} alt="book-img" style={{ width: "100%" }} />
-          </Col>
+      <Container className="">
+        <Row className="p-4 d-flex justify-content-center">
+          <div>
+            <h4 className=" text-center fw-bold">Add Book</h4>
+          </div>
+
           <Col md={5} sm={12} xs={12}>
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-2">
@@ -94,24 +89,18 @@ const Addbooks = () => {
               <Button
                 variant="warning"
                 type="submit"
-                className="mt-4 d-flex align-items-center gap-3"
-              >
+                className="mt-4 d-flex align-items-center gap-3">
                 ADD BOOK{" "}
-                <span>
+                {/* <span>
                   {isLoading && <Spinner animation="border" variant="dark" />}
-                </span>
+                </span> */}
               </Button>
             </Form>
           </Col>
-        </div>
-      </div>
+        </Row>
+      </Container>
     </MainLayout>
-  )
-}
+  );
+};
 
-
-
-
-
-
-export default Addbooks
+export default Addbooks;

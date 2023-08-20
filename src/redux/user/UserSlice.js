@@ -18,7 +18,7 @@ const userSlice = createSlice({
       state.userInfo = action.payload;
       state.error = {}
       state.isLoggedIn = true;
-      sessionStorage.setItem("user", JSON.stringify(action.payload));
+
     },
     requestFailed : (state, action)=> {
       state.isLoading = false;
