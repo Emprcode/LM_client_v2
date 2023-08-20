@@ -35,14 +35,18 @@ export const TheSidebar = () => {
           {" "}
           <PiBooksFill size={30} />
         </Link>
-        <Link to="/my-books" className="nav-link ">
+        <Link to="/borrowed-books" className="nav-link ">
           {" "}
           <FaBook size={30} />
         </Link>
+        {
+           userInfo.role === "teacher" && 
+
         <Link to="/add-books" className="nav-link ">
           {" "}
           <BiBookmarkAltPlus size={30} />
         </Link>
+                }
         <Link to="/profile" className="nav-link ">
           {" "}
           <BiSolidUserCircle size={30} />
@@ -82,12 +86,16 @@ export const TheSidebar = () => {
               {" "}
               <FaBook size={35} /> <h3>Borrowed Books</h3>
             </Link>
-            <Link
+
+            {
+              userInfo.role === "teacher" &&  <Link
               to="/add-books"
               className="nav-link d-flex align-items-center gap-3">
               {" "}
               <BiBookmarkAltPlus size={35} /> <h3>Add Books</h3>
             </Link>
+            }
+          
             <Link
               to="/profile"
               className="nav-link d-flex align-items-center gap-3">

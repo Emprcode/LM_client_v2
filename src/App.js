@@ -22,13 +22,13 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              // <RequireAuth>
+             <RequireAuth>
               <Dashboard />
-              // </RequireAuth>
+             </RequireAuth>
             }
           />
           <Route
-            path="/my-books"
+            path="/borrowed-books"
             element={
               <RequireAuth>
                 {" "}

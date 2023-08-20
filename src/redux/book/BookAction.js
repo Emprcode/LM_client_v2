@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { addBook, getBooks } from "../../helper/axiosHelper";
+import { addBook, deleteBook, getBooks } from "../../helper/axiosHelper";
 import { requestPending, setBookSuccess } from "./BookSlice";
 
 export const addBookAction = (data) => async (dispatch) => {
@@ -29,3 +29,18 @@ export const getBooksAction = () => async (dispatch) => {
     console.log(error);
   }
 };
+
+
+export const deleteBookAction = (data) => async(dispatch) => {
+  try {
+    const {status, message} = await deleteBook(data)
+    if (status === "success") {
+      dispatch(getBooksAction());
+      toast[status](message)
+      
+    }
+  } catch (error) {
+    console.log(error)
+    
+  }
+}
