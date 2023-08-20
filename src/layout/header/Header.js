@@ -14,10 +14,10 @@ export const Header = () => {
             src={logo}
             alt="logo"
             className="fw-bold"
-            width="150px"
-            height="90px"
+            width="110px"
+            height="70px"
           />
-          {/* <span className="head h3">Finance Management</span> */}
+          <span className="head h3">Finance Management</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
