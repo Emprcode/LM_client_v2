@@ -17,7 +17,7 @@ const Allbooks = () => {
       <Container className="p-4">
         <div>
           <h2 className="text-center p-5 fw-bold"> All Books</h2>
-          <div className="d-flex gap-4 flex-wrap">
+          <div className="d-flex justify-content-around align-items-center gap-4 flex-wrap">
             {books.map((item, i) => (
               <BookCard key={i} {...item} />
             ))}

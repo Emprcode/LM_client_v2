@@ -7,23 +7,25 @@ import { FaBook } from "react-icons/fa";
 import "./Dashboard.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getBooksAction } from "../../redux/book/BookAction.js";
+import { BookCard } from "../../components/cards/BookCard.js";
 
 const Dashboard = () => {
-
   const dispatch = useDispatch();
   const { books } = useSelector((state) => state.book);
   console.log(books);
   useEffect(() => {
     dispatch(getBooksAction());
   }, []);
+
+  const filteredBooks = books.slice(-4);
   return (
     <MainLayout>
       <Container>
         <div className="p-5 d-flex justify-content-between">
           <div className="h1 fw-bold">Dashboard</div>
         </div>
-        <Row className=" d-flex justify-content-around flex-wrap">
-          <Col className="card1 col-5 p-5 d-flex justify-content-center align-items-center gap-4 rounded">
+        <Row className=" d-flex justify-content-around gap-4 flex-wrap">
+          <Col className="card1 col-md-5 p-5 d-flex justify-content-center align-items-center gap-4 rounded">
             <div>
               <PiBooksFill size={70} />
             </div>
@@ -32,7 +34,7 @@ const Dashboard = () => {
               <h2 className="fw-bold">{books.length}</h2>
             </div>
           </Col>
-          <Col className="card2 col-5 p-5 d-flex justify-content-center align-items-center gap-4 rounded">
+          <Col className="card2 col-md-5 p-5 d-flex justify-content-center align-items-center gap-4 rounded">
             <div>
               <FaBook size={50} />
             </div>
@@ -44,9 +46,14 @@ const Dashboard = () => {
         </Row>
 
         <Row className="p-5 mt-5 ">
-          <h1 className="mt-5 fw-bold d-flex justify-content-center">
+          <h1 className="p-4 fw-bold d-flex justify-content-center">
             Check out our latest book collection
           </h1>
+          <div className="d-flex justify-content-around gap-4 flex-wrap">
+            {filteredBooks.map((item, i) => (
+              <BookCard key={i} {...item} />
+            ))}
+          </div>
         </Row>
       </Container>
     </MainLayout>
