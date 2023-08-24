@@ -19,7 +19,7 @@ export const Header = () => {
           />
           <span className="head h3">Finance Management</span>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto h4 gap-3">
             <Link to="/notification" className="nav-link">
