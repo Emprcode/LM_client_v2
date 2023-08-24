@@ -15,7 +15,7 @@ const Dashboard = () => {
   console.log(books);
   useEffect(() => {
     dispatch(getBooksAction());
-  }, []);
+  }, [dispatch]);
 
   const filteredBooks = books.slice(-4);
   return (
@@ -25,7 +25,7 @@ const Dashboard = () => {
           <div className="h1 fw-bold">Dashboard</div>
         </div>
         <Row className=" d-flex justify-content-around gap-4 flex-wrap">
-          <Col className="card1 col-md-5 p-5 d-flex justify-content-center align-items-center gap-4 rounded">
+          <div className="card1 col-md-5 p-5 d-flex justify-content-center align-items-center gap-4 rounded">
             <div>
               <PiBooksFill size={70} />
             </div>
@@ -33,8 +33,8 @@ const Dashboard = () => {
               <h5>Total Books</h5>
               <h2 className="fw-bold">{books.length}</h2>
             </div>
-          </Col>
-          <Col className="card2 col-md-5 p-5 d-flex justify-content-center align-items-center gap-4 rounded">
+          </div>
+          <div className="card2 col-md-5 p-5 d-flex justify-content-center align-items-center gap-4 rounded">
             <div>
               <FaBook size={50} />
             </div>
@@ -42,7 +42,7 @@ const Dashboard = () => {
               <h5>Borrowed Books</h5>
               <h2 className="fw-bold">0</h2>
             </div>
-          </Col>
+          </div>
         </Row>
 
         <Row className="p-5 mt-5 ">
