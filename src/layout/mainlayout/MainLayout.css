@@ -1,5 +1,6 @@
 .main{
-    background: #e9ecef;
+    /* background: #e9ecef; */
+    background: linear-gradient(180deg, #FFF 0%, var(--muidocs-palette-primary-50) 100%) !important;
     min-height: 90vh;
     width: 100%;
   }
