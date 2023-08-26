@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Row, Col, Container, Form, Button, Spinner } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { FormComponents } from "../../components/formComponents/FormComponents";
 import "./Login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { userLoginAction } from "../../redux/user/UserAction";
+
 
 const Login = () => {
   const emailRef = useRef();
@@ -16,10 +17,9 @@ const Login = () => {
 useEffect(() => {
   isLoggedIn && navigate("/dashboard")
 }, [isLoggedIn, navigate])
-
   const inputs = [
     {
-      email: "email",
+      name: "email",
       type: "email",
       label: "Email",
       placeholder: "Jack@gmail.com",
@@ -36,6 +36,8 @@ useEffect(() => {
     },
   ];
 
+
+
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     const obj = {
@@ -45,6 +47,8 @@ useEffect(() => {
     dispatch(userLoginAction(obj));
     
   };
+
+  // console.log(emailRef, passRef)
 
   return (
     <div className="bg-color d-flex justify-content-center align-items-center">
@@ -57,16 +61,17 @@ useEffect(() => {
               <p> Please Login Here </p>
             </div>
           </Col>
-          <Col className="mx-4 p-5">
+          <Col className=" p-5">
             <div className="p-5">
               <Form onSubmit={handleOnSubmit}>
                 {inputs.map((item, i) => (
-                  <FormComponents key={i} {...item} />
+                  <FormComponents key={i} {...item}  />
                 ))}
 
-                <Button className="button mt-3 " type="submit">
+                <Button className="button mt-3 " type="submit" >
                   Submit<span>{isLoading && <Spinner variant="border" />}</span>
                 </Button>
+               
                 <hr />
                 <div className="text-end">
                   <Link to="/register" className="nav-link fw-bold">

@@ -85,7 +85,7 @@ const Register = () => {
               {inputs.map((item, i) => (
                 <FormComponents key={i} {...item} onChange={handleOnChange} />
               ))}
-              <Form.Group className="mb-3"  onChange={handleOnChange}>
+              <Form.Group className="mb-3 col-md-6"  onChange={handleOnChange}>
               <Form.Label>Select</Form.Label>
               <Form.Select
                 defaultValue="Select Role..."

@@ -8,15 +8,8 @@ import logo from "../../assets/logo.png";
 export const Header = () => {
   return (
     <Navbar expand="md" className="bg-body-tertiary">
-      <Container className="">
+      <Container className="p-3">
         <Navbar.Brand href="">
-          <img
-            src={logo}
-            alt="logo"
-            className="fw-bold"
-            width="110px"
-            height="70px"
-          />
           <span className="head h3">Finance Management</span>
         </Navbar.Brand>
         {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
