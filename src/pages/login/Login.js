@@ -12,7 +12,7 @@ const Login = () => {
   const passRef = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {isLoggedIn, isLoading} = useSelector((state) => state.user)
+  const {isLoggedIn, isLoading, userInfo} = useSelector((state) => state.user)
 
 useEffect(() => {
   isLoggedIn && navigate("/dashboard")

@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 export const RequireAuth = ({ children }) => {
-  const { userInfo } = useSelector((state) => state.user);
-  if (!userInfo?._id) {
+  const { isLoggedIn } = useSelector((state) => state.user);
+  if (!isLoggedIn) {
     //navigate to login
     return <Navigate to="/" replace />;
   }

@@ -20,7 +20,7 @@ export const userLoginAction = (data) => async (dispatch) => {
       toast[status](message)
     }
   } catch (error) {
-    dispatch(requestFailed(error));
+   console.log(error.message)
   }
 };
 
@@ -28,7 +28,18 @@ export const FetchUserProfileAction = () => async( dispatch) => {
   //call axios to get user profile
 
   const {status, user} = await fetchUserProfile()
+  console.log(user)
   if (status==="success" && user?._id) {
     dispatch(loginSuccess(user))
   }
 }
+
+//logout
+// export const LogoutUserProfileAction = () => async( dispatch) => {
+  
+//   dispatch(loginSuccess({}))
+//   // logoutUser()
+//   sessionStorage.removeItem("accessJWT")
+//   localStorage.removeItem("refreshJWT")
+  
+// }
