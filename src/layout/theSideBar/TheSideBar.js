@@ -13,7 +13,7 @@ import "./TheSidebar.css";
 import person from "../../assets/person.png";
 import { useSelector } from "react-redux";
 
-export const TheSidebar = () => {
+export const TheSideBar = () => {
   const { userInfo } = useSelector((state) => state.user);
   console.log(userInfo);
   const [show, setShow] = useState(false);
